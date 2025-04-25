@@ -1,0 +1,36 @@
+{
+  "name": "ssrfromzero",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "devall": "npm-run-all -p dev:**",
+    "dev:start": "nodemon --watch dist --exec node dist/server.mjs",
+    "dev:build:client": "webpack --config webpack.client.js",
+    "dev:build:server": "webpack --config webpack.server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router": "^6.17.0",
+    "react-router-dom": "^6.17.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.10",
+    "@babel/preset-react": "^7.26.3",
+    "babel-loader": "^10.0.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^7.1.2",
+    "mini-css-extract-plugin": "^2.9.2",
+    "nodemon": "^3.1.9",
+    "npm-run-all": "^4.1.5",
+    "webpack": "^5.99.6",
+    "webpack-cli": "^6.0.1",
+    "webpack-merge": "^6.0.1",
+    "webpack-node-externals": "^3.0.0"
+  }
+}
