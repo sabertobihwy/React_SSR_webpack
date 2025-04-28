@@ -6,7 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const client = {
-    entry: './src/client/index.jsx',
+    entry: './src/app/client.jsx',
     output: {
         path: path.resolve(__dirname, 'public'),
         filename: 'js/client.[contenthash:5].js',

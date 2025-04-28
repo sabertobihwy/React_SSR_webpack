@@ -1,12 +1,12 @@
-import Home from './pages/front/home';
+import Home from '../pages/front/home';
 import React from 'react'
-import Front from './pages/front';
-import Admin from './pages/admin';
-import User from './pages/admin/user';
-import Sys from './pages/admin/sys';
-import { headerAdmin, headerFront } from './components/headers/headerData'
+import Front from '../pages/front';
+import Admin from '../pages/admin';
+import User from '../pages/admin/user';
+import Sys from '../pages/admin/sys';
+import { headerAdmin, headerFront } from '../components/headers/headerData'
 import { json, useLoaderData } from 'react-router-dom'
-import Movies from './pages/front/movies';
+import Movies from '../pages/front/movies';
 
 
 export const routes = [

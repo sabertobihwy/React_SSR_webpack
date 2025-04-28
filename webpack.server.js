@@ -7,7 +7,7 @@ const createESMExternals = require('./createESMExternals')
 // const externals = createESMExternals()
 
 const server = {
-    entry: './src/server/index.jsx',         // 入口是 React 的组件文件
+    entry: './src/app/server.jsx',         // 入口是 React 的组件文件
     experiments: {
         outputModule: true
     },

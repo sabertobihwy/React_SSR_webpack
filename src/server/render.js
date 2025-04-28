@@ -4,7 +4,7 @@ import {
     createStaticRouter,
     StaticRouterProvider,
 } from 'react-router-dom/server.mjs';
-import { routes } from '@/routes';
+import { routes } from '../app/routes';
 import React from 'react'
 import { getScript } from './getScript'
 import { getLink } from './getLink'
