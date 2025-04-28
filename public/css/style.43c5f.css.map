@@ -1,1 +1,0 @@
-{"version":3,"file":"css/style.43c5f.css","mappings":";;;AAAA;IACI,wBAAwB;AAC5B,C;;;;ACFA;IACI,mDAAsC;AAC1C,C","sources":["webpack://ssrfromzero/./src/assets/css/global.css","webpack://ssrfromzero/./src/pages/index.css"],"sourcesContent":["body{\r\n    background-color: bisque;\r\n}",".prettybutton{\r\n    background: url('@/assets/img/mo.png');\r\n}"],"names":[],"sourceRoot":""}

@@ -9,11 +9,15 @@ import React from 'react'
 import { getScript } from './getScript'
 import { getLink } from './getLink'
 import { getHTML } from './getHTML';
+import { createFetchRequest } from './request';
+import { json, useLoaderData } from 'react-router-dom'
 
 export default async (req, res) => {
     const { query, dataRoutes } = createStaticHandler(routes);
 
-    const context = await query(new Request(`http://localhost:8080${req.url}`));
+    const request = createFetchRequest(req, res)
+
+    const context = await query(request);
 
     const router = createStaticRouter(dataRoutes, context);
 
