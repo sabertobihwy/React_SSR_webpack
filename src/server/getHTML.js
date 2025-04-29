@@ -1,4 +1,4 @@
-export const getHTML = (getLink, getScript, AppRouterStr) => {
+export const getHTML = (getLink, getScript, AppRouterStr, preloadedState) => {
 
     const html = `<!DOCTYPE html>
 <html lang="en">
@@ -14,6 +14,9 @@ export const getHTML = (getLink, getScript, AppRouterStr) => {
     <div id="root">${AppRouterStr}</div>
     
 </body>
+<script>
+      window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState)}
+</script>
 ${getScript()}
 </html>`
 

@@ -10,7 +10,9 @@ import { getScript } from './getScript'
 import { getLink } from './getLink'
 import { getHTML } from './getHTML';
 import { createFetchRequest } from './request';
-import { json, useLoaderData } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import store from '../app/store.js';
+
 
 export default async (req, res) => {
     const { query, dataRoutes } = createStaticHandler(routes);
@@ -22,9 +24,13 @@ export default async (req, res) => {
     const router = createStaticRouter(dataRoutes, context);
 
     const AppRouterStr = renderToString(
-        <StaticRouterProvider router={router} context={context} />);
+        <Provider store={store}>
+            <StaticRouterProvider router={router} context={context} />
+        </Provider>
+    );
+    const preloadedState = store.getState()
 
-    const html = getHTML(getLink, getScript, AppRouterStr)
+    const html = getHTML(getLink, getScript, AppRouterStr, preloadedState)
 
     res.send(html)
 }
