@@ -7,6 +7,6 @@ export const rootReducer = combineReducers({
     movie: movieReducer
 })
 
-export default configureStore({
-    reducer: rootReducer
-})
+export function createReduxStore(preloadedState) {
+    return configureStore({ reducer: rootReducer, preloadedState })
+}
