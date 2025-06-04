@@ -11,7 +11,7 @@ const client = {
         path: path.resolve(__dirname, 'public'),
         filename: 'js/client.[contenthash:5].js',
         publicPath: '/', // 为浏览器请求资源前缀
-        assetModuleFilename: 'img/[name].[hash:5][ext]' // ✅ 决定资源的物理路径和 URL
+        assetModuleFilename: 'img/[name].[hash:5][ext]' // 搭配 Webpack 5内置 asset module
     },
     plugins: [
         new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: ['**/*'] }),
@@ -29,14 +29,14 @@ const client = {
                     {
                         loader: 'css-loader',
                         options: {
-                            modules: true
+                            modules: true // 开启 CSS Modules：.title → .title__a1b2c
                         }
 
                     }],
             },
             {
                 test: /\.(png|jpe?g|gif|svg)$/,
-                type: 'asset/resource'
+                type: 'asset/resource' // 会复制图片到 output.assetModuleFilename 指定目录，并返回其 URL
             }
         ],
     }
