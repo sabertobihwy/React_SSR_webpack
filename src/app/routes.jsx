@@ -7,7 +7,7 @@ import Sys from '../pages/admin/sys';
 import { headerAdmin, headerFront } from '../components/headers/headerData'
 import { json, useLoaderData } from 'react-router-dom'
 import Movies from '../pages/front/movies';
-import { fetchMovies } from '../server/request';
+import { getMovies } from '../services/getMovies';
 
 
 export const routes = [
@@ -28,29 +28,12 @@ export const routes = [
             },
             {
                 path: 'movies',
-                loader: async () => {
-                    // const { data } = await fetch('/api/movies'); // 发给本地 Express 转发
-                    return {
-                        data: {
-                            movieTotal: 44739,
-                            movieList: [
-                                {
-                                    _id: "6095093b1aaaea32a05ccee4",
-                                    rate: 7.6,
-                                    title: "智能大反攻",
-                                    url: "https://movie.douban.com/subject/30229667/",
-                                    cover: "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2637896820.jpg"
-                                },
-                                {
-                                    _id: "6095093b1aaaea32a05ccee5",
-                                    rate: 5.6,
-                                    title: "冷血悍将",
-                                    url: "https://movie.douban.com/subject/3010409/",
-                                    cover: "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2638872429.jpg"
-                                }]
-                        }
-                    };
-                },
+                loader:
+                    async () => {
+                        const { data } = await getMovies(); // 发给本地 Express 转发
+                        //console.log('loader ===> ' + JSON.stringify(data))
+                        return json(data);
+                    },
                 element: <Movies />,
             }
         ]
