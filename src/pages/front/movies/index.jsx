@@ -7,6 +7,7 @@ import * as style from './movies.module.css'
 
 export default function Movies() {
     const [page, setPage] = useState(1);
+    const loaderData = useLoaderData()
     const {
         data,
         isLoading,
@@ -16,6 +17,7 @@ export default function Movies() {
     } = useQuery({
         queryKey: ['MOVIES', page],
         queryFn: () => getMovies(page, 10),
+        initialData: page === 1 ? loaderData : undefined,
         keepPreviousData: true,
         staleTime: 1000 * 5 * 60  // 缓存 5 分钟
     })

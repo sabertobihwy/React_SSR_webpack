@@ -28,12 +28,12 @@ export const routes = [
             },
             {
                 path: 'movies',
-                // loader:
-                //     async () => {
-                //         const { data } = await getMovies(); // 发给本地 Express 转发
-                //         //console.log('loader ===> ' + JSON.stringify(data))
-                //         return json(data);
-                //     },
+                loader:
+                    async () => {
+                        const data = await getMovies(); // 发给本地 Express 转发
+                        //console.log('loader ===> ' + JSON.stringify(data))
+                        return json(data);
+                    },
                 element: <Movies />,
 
             }

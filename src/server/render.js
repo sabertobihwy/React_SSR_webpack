@@ -12,10 +12,15 @@ import { getHTML } from './getHTML';
 import { createFetchRequest } from './request';
 import { Provider } from 'react-redux'
 import { createReduxStore } from '../app/store.js';
+import {
+    QueryClient,
+    QueryClientProvider,
+} from '@tanstack/react-query';
 
 // 在server端我做的事有。请求 -> 根据router匹配到组件 -> 顺序执行loader -> 注入context再注入provider -> 组成html序列化
 export default async (req, res) => {
     const store = createReduxStore()
+    const queryClient = new QueryClient()
     try {
         const { query, dataRoutes } = createStaticHandler(routes); // 不自动触发 loader，必须显式执行 query(request)
 
@@ -29,7 +34,9 @@ export default async (req, res) => {
 
         const AppRouterStr = renderToString(
             <Provider store={store}>
-                <StaticRouterProvider router={router} context={context} />
+                <QueryClientProvider client={queryClient}>
+                    <StaticRouterProvider router={router} context={context} />
+                </QueryClientProvider>
             </Provider>
         );
         const preloadedState = store.getState()
