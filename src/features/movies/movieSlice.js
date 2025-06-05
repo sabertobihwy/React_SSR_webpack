@@ -2,13 +2,13 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const movieSlice = createSlice({
     name: 'movies',
-    initialState: { movies: [] },
+    initialState: { page: 1, limit: 10 },
     reducers: {
-        addMovie(state, action) {
-            state.movies.push(action.payload)
+        changePage(state, action) {
+            state.page = action.payload
         }
     }
 })
 
-export const { addMovie } = movieSlice.actions
+export const { changePage } = movieSlice.actions
 export const movieReducer = movieSlice.reducer
