@@ -6,7 +6,7 @@ export const CounterComponent = () => {
     const count = useSelector((state) => state.counter.count)
     // console.log(count)
     const dispatch = useDispatch()
-    console.log(dispatch)
+    // console.log(dispatch)
     const incrementCounter = useCallback(
         () => dispatch(increment()),
         [dispatch],

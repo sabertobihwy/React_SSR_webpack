@@ -5,15 +5,21 @@ import React from 'react'
 import { createReduxStore, rootReducer } from './store'
 import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
+import {
+    QueryClient,
+    QueryClientProvider,
+} from '@tanstack/react-query'
 
 const router = createBrowserRouter(routes);
-
+const queryClient = new QueryClient()
 const preloadedState = window.__PRELOADED_STATE__
 const clientStore = createReduxStore(preloadedState)
 
-console.log(window)
+//console.log(window)
 
 hydrateRoot(document.getElementById('root'),
     <Provider store={clientStore} serverState={preloadedState}>
-        <RouterProvider router={router} />
+        <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router} />
+        </QueryClientProvider>
     </Provider>);
